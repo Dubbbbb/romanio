@@ -9,16 +9,31 @@ class HomePage(ListView):
     model = Door
 
 
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        products = []
+        products.extend(Door.objects.all())
+        products.extend(Window.objects.all())
         context.update ({
-            "door": Door.objects.all(),
-            "window": Window.objects.all(),
+            "products": products,
         })
         return context
 
+class CatalogPage(ListView):
+    template_name = "category/shop-sidebar.html"
+    model = Door
 
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        
+
+        context.update ({
+            "products": products,
+            "category": SubCategory.objects.all()
+        })
+        return context
 
 # def home_page(request):
 #     return render(request, "index.html",)

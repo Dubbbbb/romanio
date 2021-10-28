@@ -87,7 +87,7 @@ FACEBOOK: https://www.facebook.com/themefisher
 			</div>
 			<div class="col-md-6">
 				<div class="category-box category-box-2">
-					<a href="#!">
+					<a href="{% url 'category_door' %}">
 						<img src="{% static "images/shop/category/category-3.jpg" %}"  alt="">
 						<div class="content">
 							<h3>Двери</h3>
@@ -110,7 +110,7 @@ FACEBOOK: https://www.facebook.com/themefisher
 				<h2>Популярные товары</h2>
 			</div>
 		</div>
-		{% for item in door %}
+		{% for item in products %}
 		
 			<div class="col-md-4">
 				<div class="product-item">

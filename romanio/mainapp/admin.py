@@ -12,6 +12,6 @@ class AdminWindow(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
 
 
-admin.site.register(MainCategory,MainCategoryAdmin)
+admin.site.register(SubCategory,MainCategoryAdmin)
 admin.site.register(Door,AdminDoor)
 admin.site.register(Window,AdminWindow)
