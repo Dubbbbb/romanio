@@ -6,7 +6,7 @@ class Product(models.Model):
     class Meta:
         abstract = True
 
-    category = models.ForeignKey("Category", verbose_name="Категория", on_delete=models.CASCADE)
+    category = models.ForeignKey("MainCategory", verbose_name="Категория", on_delete=models.CASCADE)
     title = models.CharField(max_length=255, verbose_name='Наименование')
     slug = models.SlugField(unique=True)
     image = models.ImageField(verbose_name="Изображение")
@@ -23,8 +23,14 @@ class Door(Product):
         verbose_name = 'Дверь'
         verbose_name_plural = 'Двери'
 
+class Window(Product):
 
-class Category(models.Model):
+    class Meta():
+        verbose_name = 'Окно'
+        verbose_name_plural = 'Окна'
+
+
+class MainCategory(models.Model):
     title = models.CharField(max_length=50, verbose_name="Категория")
     slug = models.SlugField(max_length=50, unique=True)
 
@@ -35,5 +41,17 @@ class Category(models.Model):
         verbose_name = 'Категории'
         verbose_name_plural = 'Категория'
 
+
+# class SecondCategory(models.Model):
+#     title = models.CharField(max_length=50, verbose_name="Подкатегория")
+#     slug = models.SlugField(max_length=50, unique=True)
+#     maincategory = models.ForeignKey(MainCategory,verbose_name="Основная категория", on_delete=models.CASCADE )
+
+#     def __str__(self):
+#         return self.title
+
+#     class Meta():
+#         verbose_name = 'Подкатегория'
+#         verbose_name_plural = 'Подкатегории'
 
 
