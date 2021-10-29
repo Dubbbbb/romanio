@@ -29,7 +29,8 @@ class CatalogPage(View):
 
         context = {
             "categories": Category.objects.all(),
-            "products": Product.objects.filter(category__slug=self.kwargs['slug_url'])
+            "products": Product.objects.filter(category__slug=self.kwargs['slug_url']),
+            "prod": Product.objects.filter(category__slug=self.kwargs['slug_url'])[0]
 
         } 
         
