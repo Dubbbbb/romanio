@@ -64,6 +64,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+
+.team-members {
+  margin-bottom: 70px;
+}
+
+
 p {
   font-family: "Poppins", sans-serif;
   color: #757575;
@@ -1313,6 +1319,10 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 .product-shorting span {
   margin-right: 15px;
+}
+
+.product-category .container {
+  margin-top: 50px;
 }
 
 .product-category ul {
