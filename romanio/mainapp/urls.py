@@ -4,5 +4,7 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('', home_page, name="home"),
+    path('', HomePage.as_view(), name="home"),
+    path('contacts/', contacts_page, name="contacts_page"),
+    path('<str:slug_url>/',CatalogPage.as_view(), name="category")
 ]
