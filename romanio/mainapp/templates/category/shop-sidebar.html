@@ -85,12 +85,12 @@ FACEBOOK: https://www.facebook.com/themefisher
 					  	<div class="panel panel-default">
 						    <div class="panel-heading" role="tab" id="headingOne">
 						      	<h4 class="panel-title">
-						        	<a role="button" data-toggle="collapse" data-parent="#accordion" href="{{ category.get_absolute_url }}#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+						        	<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{forloop.counter}}" aria-expanded="true" aria-controls="collapseOne">
 						          	{{ category.title }}
 						        	</a>
 						      	</h4>
 						    </div>
-					    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+					    <div id="collapse-{{forloop.counter}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 							<div class="panel-body">
 								<ul>
 								{% comment %} <option><a href="{{ category.get_absolute_url }}">{{ category.title }}</a></option> {% endcomment %}
