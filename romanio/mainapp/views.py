@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.db.models.query_utils import select_related_descend
+from django.shortcuts import get_object_or_404, render
 from django.views.generic.list import ListView
 
 from .models import *
@@ -16,24 +17,28 @@ class HomePage(ListView):
         products.extend(Window.objects.all())
         context.update ({
             "products": products,
+            "categories": SubCategory.objects.all(),
+            "category1": SubCategory.objects.get(pk=1),
+            "category2": SubCategory.objects.filter(pk__gt=1)
+
         })
         return context
+
 
 class CatalogPage(ListView):
     template_name = "category/shop-sidebar.html"
-    model = Door
+    model = SubCategory
+    context_object_name = 'categories'
 
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs, ):
         context = super().get_context_data(**kwargs)
         
+        # categ = get_object_or_404(SubCategory, slug=slug_id)
         
-
-        context.update ({
-            "products": products,
-            "category": SubCategory.objects.all()
-        })
         return context
+    def get_queryset(self):
+        return SubCategory.objects.filter(slug=self.kwargs['slug_url'])
 
 # def home_page(request):
 #     return render(request, "index.html",)
