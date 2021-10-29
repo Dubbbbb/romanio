@@ -93,7 +93,7 @@ FACEBOOK: https://www.facebook.com/themefisher
 					    <div id="collapse-{{forloop.counter}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 							<div class="panel-body">
 								<ul>
-								{% comment %} <option><a href="{{ category.get_absolute_url }}">{{ category.title }}</a></option> {% endcomment %}
+						
 									
 									<li><a href="#!">Brand & Twist</a></li>
 									<li><a href="#!">Shoe Color</a></li>
@@ -103,52 +103,14 @@ FACEBOOK: https://www.facebook.com/themefisher
 							</div>
 					    </div>
 					  </div>
-					 {% endfor %}
+					</div> 
+				{% endfor %}
 
-
-
-					  {% comment %} <div class="panel panel-default">
-					    <div class="panel-heading" role="tab" id="headingTwo">
-					      <h4 class="panel-title">
-					        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-					         	Окна
-					        </a>
-					      </h4>
-					    </div>
-					    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-					    	<div class="panel-body">
-					     		<ul>
-									<li><a href="#!">Brand & Twist</a></li>
-									<li><a href="#!">Shoe Color</a></li>
-									<li><a href="#!">Shoe Color</a></li>
-								</ul>
-					    	</div>
-					    </div>
-					  </div>
-					  <div class="panel panel-default">
-					    <div class="panel-heading" role="tab" id="headingThree">
-					      <h4 class="panel-title">
-					        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-					          	 Shoes
-					        </a>
-					      </h4>
-					    </div>
-					    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-					    	<div class="panel-body">
-					      		<ul>
-									<li><a href="#!">Brand & Twist</a></li>
-									<li><a href="#!">Shoe Color</a></li>
-									<li><a href="#!">Gladian Shoes</a></li>
-									<li><a href="#!">Swis Shoes</a></li>
-								</ul>
-					    	</div>
-					    </div>
-					  </div>
-					</div>
+					
 				</div>
 			</div>
 			<div class="col-md-9">
-				<div class="row"> {% endcomment %}
+				<div class="row"> 
 
 			{% for item in products %}
 
