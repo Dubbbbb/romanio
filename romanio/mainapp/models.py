@@ -4,10 +4,8 @@ from django.urls import reverse
 
 class Product(models.Model):
 
-    class Meta:
-        abstract = True
-
-    category = models.ForeignKey("SubCategory", verbose_name="Категория", on_delete=models.CASCADE)
+    category = models.ForeignKey("Category", verbose_name=("Категория"), on_delete=models.CASCADE)
+    subcategory = models.ForeignKey("SubCategory", verbose_name="Подкатегория", null=True, blank=True, on_delete=models.CASCADE)
     title = models.CharField(max_length=255, verbose_name='Наименование')
     slug = models.SlugField(unique=True)
     image = models.ImageField(verbose_name="Изображение")
@@ -18,17 +16,24 @@ class Product(models.Model):
     def __str__(self):
         return self.title
 
-class Door(Product):
+    class Meta():
+        verbose_name = "Товар"
+        verbose_name_plural = "Товары"
+
+
+class Category(models.Model):
+    title = models.CharField(max_length=50, verbose_name="Категория")
+    slug = models.SlugField(max_length=50, unique=True)
+
+    def __str__(self):
+        return self.title
 
     class Meta():
-        verbose_name = 'Дверь'
-        verbose_name_plural = 'Двери'
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
 
-class Window(Product):
-
-    class Meta():
-        verbose_name = 'Окно'
-        verbose_name_plural = 'Окна'
+    def get_absolute_url(self):
+        return reverse("category", kwargs={"slug_url": self.slug})
 
 
 class SubCategory(models.Model):
@@ -38,13 +43,9 @@ class SubCategory(models.Model):
     def __str__(self):
         return self.title
 
-    def get_absolute_url(self):
-        return reverse("category", kwargs={"slug_url": self.slug})
-    
-
     class Meta():
-        verbose_name = 'Категории'
-        verbose_name_plural = 'Категория'
+        verbose_name = 'Подкатегория'
+        verbose_name_plural = 'Подкатегории'
 
 
 # class SecondCategory(models.Model):
