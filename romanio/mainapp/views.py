@@ -15,7 +15,7 @@ class HomePage(View):
 
         context = {
 
-            "products": Product.objects.all(),
+            "products": Product.objects.all()[:6],
             "category1": Category.objects.get(pk=1),
             "category2": Category.objects.filter(id__gt=1)
 
@@ -46,7 +46,13 @@ class ProductDetail(View):
 
     def get(self, request, *args, **kwargs):
 
-        context = {}
+        context = {
+            "product": Product.objects.filter(slug=self.kwargs['slug_url'])[:1],
+            "related_product": Product.objects.filter(category__slug=self.kwargs['slug_category']).exclude(slug=self.kwargs['slug_url']),
+            
+            
+        }
+        
         
         return render(request, "product-single.html", context)
 
