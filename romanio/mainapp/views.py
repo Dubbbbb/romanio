@@ -16,8 +16,8 @@ class HomePage(View):
         context = {
 
             "products": Product.objects.all()[:6],
-            "category1": Category.objects.get(pk=1),
-            "category2": Category.objects.filter(id__gt=1)
+            "category1": Category.objects.get(pk=2),
+            "category2": Category.objects.exclude(pk=2)
 
         }
 
