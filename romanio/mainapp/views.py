@@ -31,9 +31,6 @@ class HomePage(View):
 
 class CatalogPage(View):
 
-
-    def get(self,request, *args, **kwargs,):
-
     def get(self,request, *args, **kwargs,):
         context = {
 
