@@ -14,85 +14,52 @@ from .models import *
 
 class HomePage(View):
      
+
     def get(self, request, *args, **kwargs):
 
         context = {
+
             "products": Product.objects.all()[:6],
             "category1": Category.objects.get(pk=1),
-            "category2": Category.objects.filter(id__gt=1),
-            "categories": Category.objects.all(),
-            "pr": Product.objects.get(pk=1)
+            "category2": Category.objects.filter(id__gt=1)
+
         }
 
         return render(request, "index.html", context)
+
 
 
 class CatalogPage(View):
 
 
     def get(self,request, *args, **kwargs,):
+
+    def get(self,request, *args, **kwargs,):
         context = {
+
             "categories": Category.objects.all(),
             "products": Product.objects.filter(category__slug=self.kwargs['slug_url']),
             "prod": Product.objects.filter(category__slug=self.kwargs['slug_url'])[0]
 
         } 
-        return render(request, "category/shop-sidebar.html", context)
+        
+        return render(request, "catalog.html", context)
+
 
 
 class ProductDetail(View):
 
+    def get(self, request, *args, **kwargs):
 
-    def get(self,request, *args, **kwargs,):
-        
         context = {
-            "product": Product.objects.filter(slug=self.kwargs['slug_product']),
-            "products": Product.objects.filter(category__slug=self.kwargs['slug_url']),
+            "product": Product.objects.filter(slug=self.kwargs['slug_url'])[:1],
+            "related_product": Product.objects.filter(category__slug=self.kwargs['slug_category']).exclude(slug=self.kwargs['slug_url']),
+            
+            
         }
-        return render(request, "category/product_page.html", context)
-
-
-class ProductView(RedirectView):
-
-    def get_redirect_url(self, *args, **kwargs) :
-
-        product = get_object_or_404(Product, slug=self.kwargs['slug_product'])
-
-
-        return reverse('product', kwargs = {'slug': product.slug})
-
-
-
-def solo_product(request, slug_product):
-
-    item = get_object_or_404(Product,slug=slug_product)
-
-    context = {
-    
-        "item": item
-    }
-
-
-    return render(request, "category/product_page.html", context)
-
-
-
-
-
-
-# class CategoryRedirectView(RedirectView):
-#     permanent = True
-
-#     def get_redirect_url(self, *args, **kwargs):
-#         category = get_object_or_404(Category, name=self.kwargs['category'])
-#         return reverse('category', kwargs={'slug': category.slug})
-
-
-
-
-
-def contacts_page(request):
-    return render(request, "navbar/contact/contact.html",)
+        
+        
+        return render(request, "product-single.html", context)
 
 
 
