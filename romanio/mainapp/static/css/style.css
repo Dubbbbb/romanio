@@ -751,7 +751,7 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 }
 
 .top-header .top-menu {
-  padding-top: 120px;
+  padding-top: 56px;
 }
 
 .top-header .top-menu > li > a:hover, .top-header .top-menu > li > a:focus {

@@ -1,8 +1,6 @@
 from django import forms
-from django.db import models
-from django.db.models import fields
 from .models import CustomUser
-from django.core.exceptions import ValidationError
+
 
 
 
@@ -22,4 +20,7 @@ class UserRegForm(forms.ModelForm):
         return super().clean()
 
 
+class LoginForm(forms.Form):
 
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
