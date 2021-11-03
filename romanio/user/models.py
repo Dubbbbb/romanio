@@ -14,7 +14,7 @@ class _PhoneValidator:
 
     def __call__(self, value):
         if not self._pattern.match(value):
-            raise ValidationError("{!r}, Value is not phone number.".format(value))
+            raise ValidationError('Введите существующий мобильный номер.')
 
 
 class CustomUser(AbstractUser):

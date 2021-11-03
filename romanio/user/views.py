@@ -24,19 +24,9 @@ class UserSignIn(View):
         print(user_form.cleaned_data)
             
 
-def register(request):
-    if request.method == 'POST':
-        
-        user_form = UserRegForm(request.POST)
-        if user_form.is_valid():
-            # Create a new user object but avoid saving it yet
-            new_user = user_form.save(commit=False)
-            # Set the chosen password
-            new_user.set_password(user_form.cleaned_data['password'])
-            print(user_form.cleaned_data)
-            # Save the User object
-            new_user.save()
-            return render(request, 'index.html', {'new_user': new_user})
-    else:
-        user_form = UserRegForm()
-    return render(request, 'user/signin.html', {'form': user_form})
+    def post(self, request, *args, **kwargs):   
+        form = UserRegForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+        return render(request, 'user/signin.html', {'form':UserRegForm(request.POST)})

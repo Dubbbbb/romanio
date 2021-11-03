@@ -18,6 +18,16 @@
             </div>
             
             <div class="col-md-4 col-xs-12 col-sm-4">
+                {% if user.is_anonymous %}
+                <ul class="top-menu text-right list-inline" style="padding-top:26px">
+                    <li class="dropdown dropdown-slide" style="padding: 0px">
+                        <button class="btn btn-main btn-small"  style="border-color:white; background-color:transparent" href=""> Вход </button>
+                    </li>
+                    <li class="dropdown dropdown-slide" >
+                        <button class="btn btn-main btn-small" style="border-color:white; background-color:transparent" href="">  Регстрация </button>
+                    </li>
+                </ul>
+                {% else %}
                 <ul class="top-menu text-right list-inline">
 
                     <li class="dropdown search dropdown-slide">
@@ -71,6 +81,7 @@
                         
                     </li>
                 </ul>
+                {% endif %}
             </div>
         </div>
     </div>
