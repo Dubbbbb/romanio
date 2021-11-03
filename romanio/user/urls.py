@@ -7,7 +7,8 @@ from django.contrib.auth.views import PasswordResetView, PasswordResetConfirmVie
 
 urlpatterns = [
     path('signin/', UserSignIn, name="signin"),
-    path('login/', UserLogIn, name="login"),
+    path('login/', UserLogin.as_view(), name="login"),
+    path('logout/', logout_view, name='logout'),
     url(r'^password-reset/$', PasswordResetView.as_view(
         template_name='user/password_reset_form.html',
     ), name='password_reset'),
@@ -20,4 +21,5 @@ urlpatterns = [
     url(r'^password-reset/complete/$', PasswordResetCompleteView.as_view(
         template_name='user/password_reset_complete.html',
     ), name='password_reset_complete'),
+
 ]
