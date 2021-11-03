@@ -12,7 +12,7 @@ class UserRegForm(forms.ModelForm):
 
     class Meta:
         model = CustomUser
-        fields = ('username', 'first_name', 'last_name', 'email', 'coop_name')
+        fields = ('username', 'first_name', 'last_name', 'phone_number', 'email', 'coop_name')
 
         # 'phone_number'
 
