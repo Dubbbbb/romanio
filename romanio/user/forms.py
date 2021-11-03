@@ -16,11 +16,10 @@ class UserRegForm(forms.ModelForm):
         model = CustomUser
         fields = ('username', 'first_name', 'last_name', 'email', 'phone_number', 'coop_name')
 
-    def clean_password2(self):
-        cd = self.cleaned_data
-        if cd['password'] != cd['password2']:
-            raise ValidationError('Вы ввели разные пароли')
-        return cd['password2']
+    def clean(self):
+        if self.cleaned_data['password'] != self.cleaned_data['password2']:
+            self.add_error('password2','Пароли не совпадают.')
+        return super().clean()
 
 
 

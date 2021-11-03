@@ -8,22 +8,23 @@
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <div class="block text-center">
-          <h2 class="text-center">Create Your Account</h2>
+          <h2 class="text-center">Регистрация аккаунта</h2>
           <form class="text-left clearfix" action="" method="post">
             {% csrf_token %}
             {% for f in form %}
             <div class="form-group">
-            
-              <input id={{f.id_for_label}} type="text" class="form-control"  placeholder="{{f.label}}">
-          
+              <input for="{{f.id_for_label }}" {% if f.label == 'Пароль' or f.label == 'Повтор пароля' %}type="password"{% else %} type="text" {% endif %} class="form-control"  placeholder="{{f.label}}" {{f}}
+              <div class="invalid-feedback">
+                {{f.errors}}
+              </div>
             </div>
             {% endfor %}
             <div class="text-center">
-              <button type="submit" class="btn btn-main text-center">Sign In</button>
+              <button type="submit" class="btn btn-main text-center">Зарегестрироваться</button>
             </div>
           </form>
-          <p class="mt-20">Already hava an account ?<a href="login.html"> Login</a></p>
-          <p><a href="forget-password.html"> Forgot your password?</a></p>
+          <p class="mt-20">Уже имеете аккаунт?<a href="login.html"> Вход</a></p>
+          <p><a href="forget-password.html"> Забыли свой пароль?</a></p>
         </div>
       </div>
     </div>
