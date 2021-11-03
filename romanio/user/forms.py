@@ -24,4 +24,9 @@ class UserRegForm(forms.ModelForm):
         return super().clean()
 
 
+class LoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
+
+
 
