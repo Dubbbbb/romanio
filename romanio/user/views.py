@@ -1,4 +1,5 @@
 
+from django.forms.forms import Form
 from django.shortcuts import redirect, render
 from django.views.generic.base import View
 from .forms import LoginForm, UserRegForm
@@ -23,10 +24,13 @@ class UserSignIn(View):
     def post(self, request, *args, **kwargs):   
         form = UserRegForm(request.POST)
         if form.is_valid():
-            user = form.save()
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data['password'])
+            user.save()
             login(request, user)
             return redirect('home')
         return render(request, 'user/signin.html', {'form':form})
+
 
 
 class UserLogin(View):
