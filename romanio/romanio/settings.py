@@ -161,15 +161,10 @@ SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
 LOGIN_URL = '/auth/complete/google-oauth2/'
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/complete_reg/'
 LOGOUT_REDIRECT_URL = '/'
 
 
-SOCIAL_AUTH_FACEBOOK_SCOPE = [
-    'email',
-    'user_friends',
-    'friends_location',
-]
 
 SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.social_details',
