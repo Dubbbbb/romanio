@@ -1,6 +1,8 @@
 {% extends 'index.html' %}
 
 
+{% load static %}
+
 
 {% block main %}
 
@@ -12,7 +14,7 @@
           <a class="logo" href="index.html">
             <img src="images/logo.png" alt="">
           </a>
-          <h2 class="text-center">Welcome Back</h2>
+          <h2 class="text-center">Добро Пожаловать</h2>
           {% if messages %}
           {% for message in messages %}
           <div class="alert alert-danger alert-common" role="alert">
@@ -29,11 +31,15 @@
               <input type="password" class="form-control" placeholder="Пароль"{{form.password}}
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-main text-center" >Login</button>
+              <button type="submit" class="btn btn-main text-center" >Войти</button>
             </div>
           </form>
-          <p class="mt-20">New in this site ?<a href="signin.html"> Create New Account</a></p>
-          <p><a href="{% url "password_reset" %}">Forgotten your password?</a></p>
+          <p class="mt-20">Впервые на нашем сайте?<a href="{% url "signin" %}"> Создайте новый аккаунт</a></p>
+          <p><a href="{% url "password_reset" %}">Восстановить пароль</a></p>
+          <p>Вы можете авторизироваться с помощью:</p>
+            <a href="{% url "social:begin" 'google-oauth2' %}">
+            <img src="{% static "images/google.png" %}"   alt="">
+            </a>
         </div>
       </div>
     </div>
