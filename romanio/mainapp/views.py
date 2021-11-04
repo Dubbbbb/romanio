@@ -1,10 +1,14 @@
 from django.db.models.query_utils import select_related_descend
 from django.shortcuts import get_object_or_404, render
+from django.views.generic.base import RedirectView
 from django.views.generic.list import ListView
 from django.views.generic import View
+from django.shortcuts import get_object_or_404
 
 
 from .models import *
+
+
 
 
 
@@ -27,9 +31,7 @@ class HomePage(View):
 
 class CatalogPage(View):
 
-
     def get(self,request, *args, **kwargs,):
-
         context = {
 
             "categories": Category.objects.all(),

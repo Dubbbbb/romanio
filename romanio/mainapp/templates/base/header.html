@@ -16,6 +16,7 @@
                     </a>
                 </div>
             </div>
+            
             <div class="col-md-4 col-xs-12 col-sm-4">
                 
                 {% if user.is_anonymous %}
@@ -33,7 +34,11 @@
                         <a class="btn btn-main btn-small"  style="border-color:white; background-color:transparent; padding: 8px 25px;font-size: 10px;" href="{% url 'logout' %}"> Выйти </a>
                     </li>
                 <ul class="top-menu text-right list-inline">
-                    <li class="dropdown cart-nav dropdown-slide">
+
+                    <li class="dropdown search dropdown-slide">
+                        <a href="" class="button"> Вход</a>
+                
+                    {% comment %} <li class="dropdown cart-nav dropdown-slide">
                         <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i
                                 class="tf-ion-android-cart"></i>Cart</a>
                         <div class="dropdown-menu cart-dropdown">
@@ -74,16 +79,11 @@
                                 <li><a href="checkout.html" class="btn btn-small btn-solid-border">Checkout</a></li>
                             </ul>
                         </div>
-                    </li>
+                    </li> {% endcomment %}
 
                     <li class="dropdown search dropdown-slide">
-                        <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i
-                                class="tf-ion-ios-search-strong"></i> Search</a>
-                        <ul class="dropdown-menu search-dropdown">
-                            <li>
-                                <form action="post"><input type="search" class="form-control" placeholder="Search..."></form>
-                            </li>
-                        </ul>
+                        <a href="#!" class="button"> Регистрация</a>
+                        
                     </li>
                 </ul>
                 {% endif %}
@@ -205,7 +205,7 @@
                             role="button" aria-haspopup="true" aria-expanded="false">Elements <span
                                 class="tf-ion-ios-arrow-down"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="typography.html">Typography</a></li>
+                            <li><a href="{% url 'password_reset' %}">Typography</a></li>
                             <li><a href="buttons.html">Buttons</a></li>
                             <li><a href="alerts.html">Alerts</a></li>
                         </ul>

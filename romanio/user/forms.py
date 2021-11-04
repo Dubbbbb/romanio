@@ -13,7 +13,9 @@ class UserRegForm(forms.ModelForm):
 
     class Meta:
         model = CustomUser
-        fields = ('username', 'first_name', 'last_name', 'email', 'phone_number', 'coop_name')
+        fields = ('username', 'first_name', 'last_name', 'phone_number', 'email', 'coop_name')
+
+        # 'phone_number'
 
     def clean(self):
         if self.cleaned_data['password'] != self.cleaned_data['password2']:
