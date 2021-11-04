@@ -2,10 +2,10 @@
 from django.forms.forms import Form
 from django.shortcuts import redirect, render
 from django.views.generic.base import View
-from .forms import LoginForm, UserRegForm
+from .forms import LoginForm, PassResForm, UserRegForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-
+from django.contrib.auth.views import PasswordResetView
 
 
 def logout_view(request):
@@ -41,16 +41,21 @@ class UserLogin(View):
         else:
             return redirect('home')
 
-    def post(self, requst, *args, **kwargs):
-        form = LoginForm(requst.POST)
+    def post(self, request, *args, **kwargs):
+        form = LoginForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
             user = authenticate(username=cd['username'],password=cd['password'])
             if user is not None:
-                login(requst, user)
+                login(request, user)
                 return redirect('home')
             else:
-                messages.error(requst, 'Ошибка входа. Проверьте вводимые данные.')
+                messages.error(request, 'Ошибка входа. Проверьте вводимые данные.')
                 return redirect('login')
-        return render(requst, 'user/login.html', {'form':form})
+        return render(request, 'user/login.html', {'form':form})
             
+
+class PassResView(PasswordResetView):
+    form_class = PassResForm
+
+

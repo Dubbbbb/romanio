@@ -23,8 +23,8 @@
               <button type="submit" class="btn btn-main text-center">Зарегестрироваться</button>
             </div>
           </form>
-          <p class="mt-20">Уже имеете аккаунт?<a href="login.html"> Вход</a></p>
-          <p><a href="forget-password.html"> Забыли свой пароль?</a></p>
+          <p class="mt-20">Уже имеете аккаунт?<a href="{% url 'login' %}"> Вход</a></p>
+          <p><a href="{% url 'password_reset' %}"> Забыли свой пароль?</a></p>
         </div>
       </div>
     </div>

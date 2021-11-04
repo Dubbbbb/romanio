@@ -119,6 +119,7 @@ input[type="email"], input[type="password"], input[type="text"], input[type="tel
   outline: none;
   font-weight: 200;
   font-size: 12px;
+  color: black;
 }
 
 input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focus, input[type="tel"]:focus {
