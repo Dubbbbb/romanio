@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -41,6 +40,7 @@ INSTALLED_APPS = [
     'mainapp',
     'user',
     'social_django',
+    'cart'
 ]
 
 MIDDLEWARE = [
@@ -161,15 +161,11 @@ SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
 LOGIN_URL = '/auth/complete/google-oauth2/'
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/complete_reg/'
+
 LOGOUT_REDIRECT_URL = '/'
 
 
-SOCIAL_AUTH_FACEBOOK_SCOPE = [
-    'email',
-    'user_friends',
-    'friends_location',
-]
 
 SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.social_details',
@@ -188,3 +184,6 @@ SOCIAL_AUTH_GOOGLE_EMAIL_EXTRA_DATA = [
     ('number', 'phone_number'),
     ('token_type', 'token_type', True)
 ]
+
+
+CART_SESSION_ID = 'cart'

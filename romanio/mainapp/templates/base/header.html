@@ -33,9 +33,12 @@
                     <li class="dropdown dropdown-slide" style="padding: 0px">
                         <a class="btn btn-main btn-small"  style="border-color:white; background-color:transparent; padding: 8px 25px;font-size: 10px;" href="{% url 'logout' %}"> Выйти </a>
                     </li>
-                
+                    <li class="dropdown dropdown-slide" >
+                        <a class="btn btn-main btn-small" style="border-color:white; background-color:transparent; padding: 8px 25px;font-size: 10px;" href="{% url 'profile' %}">  Личный кабинет </a>
+                    </li>
 
-                
+
+                <ul class="top-menu text-right list-inline">
                     <li class="dropdown cart-nav dropdown-slide">
                         <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i
                                 class="tf-ion-android-cart"></i>Cart</a>
@@ -79,8 +82,7 @@
                         </div>
                     </li> 
 
-                
-                        
+
                     </li>
                 </ul>
                 {% endif %}
