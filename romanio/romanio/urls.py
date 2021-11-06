@@ -24,7 +24,8 @@ from django.urls.conf import include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('mainapp.urls')),
-    path('auth/', include('user.urls'))
+    path('auth/', include('user.urls')),
+    path('cart/', include('cart.urls')),
 ]
 
 if settings.DEBUG:

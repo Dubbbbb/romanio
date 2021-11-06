@@ -221,9 +221,10 @@
 			        			<div class="product-short-details">
 			        				<h2 class="product-title">{{prod.title}}</h2>
 			        				<p class="product-price">{{ prod.price }}</p>
-			        				<p class="product-short-description">{{ prod.description }}
+			        				<p class="product-short-description">
+			        					{{ prod.description }}
 			        				</p>
-			        				<a href="cart.html" class="btn btn-main">Add To Cart</a>
+			        				<a href="{% url 'cart:cart_add' prod.id %}" class="btn btn-main">Add To Cart</a>
 			        				<a href="{{prod.get_absolute_url}}" class="btn btn-transparent">Детальный обзор товара</a>
 			        			</div>
 			        		</div>

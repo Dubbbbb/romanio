@@ -58,6 +58,7 @@ class PhoneAddView(View):
         if request.user.phone_number:
             return redirect('home')
         form = AddPhoneForm()
+        
         return render(request, 'profile/phone_add.html', {'form': form})
 
     def post(self, request, *args, **kwargs):
