@@ -224,7 +224,11 @@
 			        				<p class="product-short-description">
 			        					{{ prod.description }}
 			        				</p>
-			        				<a href="{% url 'cart:cart_add' prod.id %}" class="btn btn-main">Add To Cart</a>
+									<form action="{% url 'cart_add' prod.id %}" method="post">
+										{% csrf_token %}
+										
+										<button type="submit" class="btn btn-main text-center" >Добавить в корзину</button> <br>
+										<p class="product-short-description" style="color:black;">В количестве: {{ cart_product_form.quantity }} </p>
 			        				<a href="{{prod.get_absolute_url}}" class="btn btn-transparent">Детальный обзор товара</a>
 			        			</div>
 			        		</div>

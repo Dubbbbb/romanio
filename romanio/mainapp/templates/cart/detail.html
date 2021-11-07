@@ -39,20 +39,25 @@
                     </tr>
                   </thead>
                   <tbody>
-                  {% for product in cart.product %}
+                  {% for item in cart %}
+                  {{cart}}---------{{item}}
+                    {% with product=item.product  %}
+                    {{product}}
                     <tr class="">
                       <td class="">
                         <div class="product-info">
-                          <img width="80" src="images/shop/cart/cart-1.jpg" alt="" />
+                          <img width="80" src="{{product.image.url}}" alt="" />
                           <a href="#!">{{ product.title }}</a>
                         </div>
                       </td>
-                      <td class="">$200.00</td>
+                      <td class="">{{item.price}}</td>
                       <td class="">
                         <a class="product-remove" href="#!">Remove</a>
                       </td>
                     </tr>
-                    {% endfor %}
+                    {% endwith %}
+                  {% endfor %}
+                    
                     {% comment %} <tr class="">
                       <td class="">
                         <div class="product-info">

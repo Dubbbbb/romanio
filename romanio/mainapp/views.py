@@ -1,6 +1,7 @@
 from django import forms
 from django.shortcuts import  get_object_or_404, redirect, render
 from django.views.generic import View
+from cart.forms import CartAddProductForm
 from user.forms import AddPhoneForm
 from user.models import CustomUser
 
@@ -16,7 +17,8 @@ class HomePage(View):
         context = {
             "products": Product.objects.all()[:6],
             "category1": Category.objects.get(pk=2),
-            "category2": Category.objects.exclude(pk=2)
+            "category2": Category.objects.exclude(pk=2),
+            "cart_product_form": CartAddProductForm,
        }
         return render(request, "index.html", context)
 
