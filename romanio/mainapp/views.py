@@ -4,6 +4,7 @@ from django.views.generic import View
 from cart.forms import CartAddProductForm
 from user.forms import AddPhoneForm
 from user.models import CustomUser
+from cart.cart import Cart
 
 from .models import *
 
@@ -19,6 +20,7 @@ class HomePage(View):
             "category1": Category.objects.get(pk=2),
             "category2": Category.objects.exclude(pk=2),
             "cart_product_form": CartAddProductForm,
+            "cart": Cart(request)
        }
         return render(request, "index.html", context)
 

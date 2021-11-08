@@ -26,6 +26,7 @@
   <div class="cart shopping">
     <div class="container">
       <div class="row">
+        {% if cart %}   
         <div class="col-md-8 col-md-offset-2">
           <div class="block">
             <div class="product-list">
@@ -35,14 +36,13 @@
                     <tr>
                       <th class="">Item Name</th>
                       <th class="">Item Price</th>
+                      <th class="">Количество</th>
                       <th class="">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
                   {% for item in cart %}
-                  {{cart}}---------{{item}}
                     {% with product=item.product  %}
-                    {{product}}
                     <tr class="">
                       <td class="">
                         <div class="product-info">
@@ -51,44 +51,30 @@
                         </div>
                       </td>
                       <td class="">{{item.price}}</td>
+                       <td class="">{{item.quantity}}</td>
                       <td class="">
-                        <a class="product-remove" href="#!">Remove</a>
+                        <a class="product-remove" href="{% url 'cart_remove' product.id %}">Remove</a>
                       </td>
                     </tr>
                     {% endwith %}
                   {% endfor %}
                     
-                    {% comment %} <tr class="">
-                      <td class="">
-                        <div class="product-info">
-                          <img width="80" src="images/shop/cart/cart-2.jpg" alt="" />
-                          <a href="#!">Airspace</a>
-                        </div>
-                      </td>
-                      <td class="">$200.00</td>
-                      <td class="">
-                        <a class="product-remove" href="#!">Remove</a>
-                      </td>
-                    </tr>
-                    <tr class="">
-                      <td class="">
-                        <div class="product-info">
-                          <img width="80" src="images/shop/cart/cart-3.jpg" alt="" />
-                          <a href="#!">Bingo</a>
-                        </div>
-                      </td>
-                      <td class="">$200.00</td>
-                      <td class="">
-                        <a class="product-remove" href="#!">Remove</a>
-                      </td>
-                    </tr> {% endcomment %}
                   </tbody>
+                    <tr>
+                      <th></th>
+                      <th></th>
+                      <th>Итого:</th>
+                      <th>{{cart.get_total_price}}</th>
+                    </tr>
                 </table>
                 <a href="checkout.html" class="btn btn-main pull-right">Checkout</a>
               </form>
             </div>
           </div>
         </div>
+        {% else %}
+        <h1 class="text-center" style="margin-bottom:180px;">Ваша корзина пуста</h1>
+        {% endif %}    
       </div>
     </div>
   </div>
