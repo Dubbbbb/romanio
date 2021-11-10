@@ -33,11 +33,11 @@
               <form method="post">
                 <table class="table">
                   <thead>
-                    <tr>
-                      <th class="">Item Name</th>
-                      <th class="">Item Price</th>
+                    <tr style="font-size:16px;">
+                      <th class="">Название</th>
+                      <th class="">Цена</th>
                       <th class="">Количество</th>
-                      <th class="">Actions</th>
+                      <th class="">Действие</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -51,9 +51,15 @@
                         </div>
                       </td>
                       <td class="">{{item.price}}</td>
-                       <td class="">{{item.quantity}}</td>
+                       <td>{{item.quantity}}</td>
+                      {% comment %} <td class="vote1"><form method="post">{% csrf_token %}
+
+                             {{cart_product_form.quantity}}
+                             
+                        </form></td> {% endcomment %}
                       <td class="">
-                        <a class="product-remove" href="{% url 'cart_remove' product.id %}">Remove</a>
+                        <a class="product-remove" href="{% url 'cart_remove' product.id %}">Удалить</a>
+                        
                       </td>
                     </tr>
                     {% endwith %}
@@ -61,13 +67,13 @@
                     
                   </tbody>
                     <tr>
+                      <th style="font-size:17px">Итого:</th>
                       <th></th>
                       <th></th>
-                      <th>Итого:</th>
                       <th>{{cart.get_total_price}}</th>
                     </tr>
                 </table>
-                <a href="checkout.html" class="btn btn-main pull-right">Checkout</a>
+                <a href="{% url 'create_order' %}" class="btn btn-main pull-right">Заказать</a>
               </form>
             </div>
           </div>

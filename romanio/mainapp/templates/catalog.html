@@ -63,18 +63,15 @@
 			<div class="col-md-4">
 				<div class="product-item">
 					<div class="product-thumb">
-						<span class="bage">Sale</span>
+
 						<img class="img-responsive" src="{{ item.image.url }}" alt="product-img" />
 						<div class="preview-meta">
 							<ul>
 								<li>
-									<span  data-toggle="modal" data-target="#product-modal">
+									<span  data-toggle="modal" data-target="#product-modal-{{forloop.counter}}">
 										<i class="tf-ion-ios-search-strong"></i>
 									</span>
-								</li>
-								<li>
-			                        <a href="#!" ><i class="tf-ion-ios-heart"></i></a>
-								</li>
+								</li>					
 								<li>
 									<a href="#!"><i class="tf-ion-android-cart"></i></a>
 								</li>
@@ -87,6 +84,42 @@
 					</div>
 				</div>
 			</div>
+
+
+		<div class="modal product-modal fade" id="product-modal-{{forloop.counter}}">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<i class="tf-ion-close"></i>
+			</button>
+		  	<div class="modal-dialog " role="document">
+		    	<div class="modal-content">
+			      	<div class="modal-body">
+			        	<div class="row">
+			        		<div class="col-md-8 col-sm-6 col-xs-12">
+			        			<div class="modal-image">
+				        			<img class="img-responsive" src="{{ item.image.url }}"  alt="product-img" />
+			        			</div>
+			        		</div>
+			        		<div class="col-md-4 col-sm-6 col-xs-12">
+			        			<div class="product-short-details">
+			        				<h2 class="product-title">{{item.title}}</h2>
+			        				<p class="product-price">{{ item.price }}</p>
+			        				<p class="product-short-description">
+			        					{{ item.description }}
+			        				</p>
+									<form action="{% url 'cart_add' item.id %}" method="post">
+										{% csrf_token %}
+										
+										<button type="submit" class="btn btn-main text-center" >Добавить в корзину</button> <br>
+										<p class="product-short-description" style="color:black;">В количестве: {{ cart_product_form.quantity }} </p>
+			        					<a href="{{item.get_absolute_url}}" class="btn btn-transparent">Детальный обзор товара</a>
+									</form>
+			        			</div>
+			        		</div>
+			        	</div>
+			        </div>
+		    	</div>
+		  	</div>
+		</div>
 			{% endfor %}
 				</div>				
 			</div>

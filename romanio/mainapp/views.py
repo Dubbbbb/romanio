@@ -20,7 +20,7 @@ class HomePage(View):
             "category1": Category.objects.get(pk=2),
             "category2": Category.objects.exclude(pk=2),
             "cart_product_form": CartAddProductForm,
-            "cart": Cart(request)
+            # "cart": Cart(request)
        }
         return render(request, "index.html", context)
 
@@ -32,8 +32,9 @@ class CatalogPage(View):
         context = {
             "categories": Category.objects.all(),
             "products": Product.objects.filter(category__slug=self.kwargs['slug_url']),
-            "prod": Product.objects.filter(category__slug=self.kwargs['slug_url'])[0]
-        }       
+            "prod": Product.objects.filter(category__slug=self.kwargs['slug_url'])[0],
+            "cart_product_form": CartAddProductForm   
+        }
         return render(request, "catalog.html", context)
 
 
@@ -67,7 +68,6 @@ class PhoneAddView(View):
 
     def post(self, request, *args, **kwargs):
         form = AddPhoneForm(request.POST)
-        print(form.data)
         if form.is_valid():
             user = get_object_or_404(CustomUser,username=request.user.username)
             user.phone_number = form.cleaned_data['phone_number']

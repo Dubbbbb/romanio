@@ -11,7 +11,7 @@
             </div>
             <div class="col-md-4 col-xs-12 col-sm-4">
                 <div class="logo text-center ">
-                    <a href="index.html">
+                    <a href="{% url 'home' %}">
                         <img src="{% static "images/logo.png" %}" width="300px" alt="">
                     </a>
                 </div>
@@ -41,10 +41,10 @@
                 <ul class="top-menu text-right list-inline">
                     <li class="dropdown cart-nav dropdown-slide">
                         <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i
-                                class="tf-ion-android-cart"></i>Cart</a>
+                                class="tf-ion-android-cart"></i> Корзина</a>
                         <div class="dropdown-menu cart-dropdown">
-                           {% for item in cart %}
-                            {% with product as item.prduct %}
+                           {% for item in cart %}                  
+                            {% with product=item.product %}
                             <div class="media">
                                 <a class="pull-left" href="#!">
                                     <img class="media-object" src="{{product.image.url}}"  alt="" />
@@ -62,12 +62,12 @@
                             {% endwith %}
                           {% endfor %}
                             <div class="cart-summary">
-                                <span>Total</span>
+                                <span>Итого</span>
                                 <span class="total-price">{{cart.get_total_price}}</span>
                             </div>
                             <ul class="text-center cart-buttons">
-                                <li><a href="cart.html" class="btn btn-small">View Cart</a></li>
-                                <li><a href="checkout.html" class="btn btn-small btn-solid-border">Checkout</a></li>
+                                <li><a href="{% url 'cart_detail' %}" class="btn btn-small">к корзине</a></li>
+                                <li><a href="{% url 'create_order' %}" class="btn btn-small btn-solid-border">заказать</a></li>
                             </ul>
                         </div>
                     </li> 
@@ -104,7 +104,7 @@
                     </li>
                     <li class="dropdown dropdown-slide">
                         <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
-                            role="button" aria-haspopup="true" aria-expanded="false">Shop <span
+                            role="button" aria-haspopup="true" aria-expanded="false">каталог <span
                                 class="tf-ion-ios-arrow-down"></span></a>
                         <div class="dropdown-menu">
                             <div class="row">
@@ -137,7 +137,7 @@
 
                     <li class="dropdown full-width dropdown-slide">
                         <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
-                            role="button" aria-haspopup="true" aria-expanded="false">Pages <span
+                            role="button" aria-haspopup="true" aria-expanded="false">что-то с личным каб <span
                                 class="tf-ion-ios-arrow-down"></span></a>
                         <div class="dropdown-menu">
                             <div class="row">
@@ -189,15 +189,8 @@
                         <a href="" role="button">Контакты</a>
                     </li>
 
-                    <li class="dropdown dropdown-slide">
-                        <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
-                            role="button" aria-haspopup="true" aria-expanded="false">Elements <span
-                                class="tf-ion-ios-arrow-down"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{% url 'password_reset' %}">Typography</a></li>
-                            <li><a href="{% url "social:begin" 'google-oauth2' %}">Buttons</a></li>
-                            <li><a href="alerts.html">Alerts</a></li>
-                        </ul>
+                    <li class="dropdown ">
+                        <a href="{% url 'home' %}">FAQ</a>
                     </li>
                 </ul>
 

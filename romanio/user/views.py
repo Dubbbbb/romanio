@@ -27,7 +27,7 @@ class UserSignIn(View):
             user = form.save(commit=False)
             user.set_password(form.cleaned_data['password'])
             user.save()
-            login(request, user)
+            login(request, user,backend='django.contrib.auth.backends.ModelBackend')
             return redirect('home')
         return render(request, 'user/signin.html', {'form':form})
 

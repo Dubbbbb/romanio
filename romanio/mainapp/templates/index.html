@@ -176,7 +176,6 @@
 			<div class="col-md-4">
 				<div class="product-item">
 					<div class="product-thumb">
-						<span class="bage">Sale</span>
 						<img class="img-responsive" src="{{ prod.image.url }}"  alt="product-img" />
 						<div class="preview-meta">
 							<ul>
@@ -185,11 +184,9 @@
 										<i class="tf-ion-ios-search-strong"></i>
 									</span>
 								</li>
+
 								<li>
-			                        <a href="#!" ><i class="tf-ion-ios-heart"></i></a>
-								</li>
-								<li>
-									<a href="#!"><i class="tf-ion-android-cart"></i></a>
+									<a href="{% url 'cart_add' prod.id %}" ><i class="tf-ion-android-cart"></i></a>
 								</li>
 							</ul>
                       	</div>
@@ -260,12 +257,12 @@
 				      <span class="input-group-btn">
 				        <button class="btn btn-main" type="button">Subscribe Now!</button>
 				      </span>
-				    </div><!-- /input-group -->
-			  </div><!-- /.col-lg-6 -->
+				    </div>
+			  </div>
 
 			</div>
-		</div> 		<!-- End row -->
-	</div>   	<!-- End container -->
+		</div> 		
+	</div>   	
 </section>
 
 {% endblock main %}
@@ -290,9 +287,6 @@
 
     <script src="{% static "plugins/slick/slick-animation.min.js" %}"></script>
 
-	<script src="{% static "https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw" %}"></script>
-
-    {% comment %} <script type="text/javascript" src="{% static "plugins/google-map/gmap.js" %}"></script> {% endcomment %}
 
     <script src="{% static "js/script.js" %}"></script>
     
