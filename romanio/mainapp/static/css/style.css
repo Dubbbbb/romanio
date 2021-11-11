@@ -2408,7 +2408,7 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 }
 
 .shopping.cart .product-list .product-remove {
-  color: #c7254e;
+  color: #ff0000;
 }
 
 .shopping.cart .account-details {

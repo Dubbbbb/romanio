@@ -30,7 +30,6 @@
         <div class="col-md-8 col-md-offset-2">
           <div class="block">
             <div class="product-list">
-              <form method="post">
                 <table class="table">
                   <thead>
                     <tr style="font-size:16px;">
@@ -51,12 +50,22 @@
                         </div>
                       </td>
                       <td class="">{{item.price}}</td>
-                       <td>{{item.quantity}}</td>
-                      {% comment %} <td class="vote1"><form method="post">{% csrf_token %}
+                       <td style="">
+                        
+                        <a  type="button" data-toggle="collapse" data-target="#collapseExample-{{forloop.counter}}" aria-expanded="false" aria-controls="collapseExample">
+                           {{item.quantity}} шт.<p style="color:gray">изменить?</p>
+                        </a>
+                        </p>
+                        <div class="collapse" id="collapseExample-{{forloop.counter}}">
+                          <form action="{% url 'cart_update' product.id %}" method="post">
+                            {% csrf_token %}
 
-                             {{cart_product_form.quantity}}
-                             
-                        </form></td> {% endcomment %}
+                            {{cart_product_form.quantity}}
+                            <button type="submit" class="tf-ion-android-done" ></button>
+                          </form>
+                        </div>
+                       </td>
+
                       <td class="">
                         <a class="product-remove" href="{% url 'cart_remove' product.id %}">Удалить</a>
                         
@@ -74,17 +83,29 @@
                     </tr>
                 </table>
                 <a href="{% url 'create_order' %}" class="btn btn-main pull-right">Заказать</a>
-              </form>
             </div>
           </div>
         </div>
         {% else %}
-        <h1 class="text-center" style="margin-bottom:180px;">Ваша корзина пуста</h1>
+        <section class="empty-cart page-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="block text-center">
+        	<i class="tf-ion-ios-cart-outline"></i>
+          	<h1 class="text-center">Ваша корзина пуста.</h1>
+          
+          	<a href="{% url 'home' %}" class="btn btn-main mt-20">За покупками!</a>
+      </div>
+    </div>
+  </div>
+</section>
         {% endif %}    
       </div>
     </div>
   </div>
 </div>
+
 
 
 {% endblock main %}
