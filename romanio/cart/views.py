@@ -19,8 +19,6 @@ def cart_add(request, product_id):
         cart.add(product=product,
                  quantity=cd['quantity'],
                  update_quantity=cd['update'])
-    if request.method == 'GET': 
-        return redirect('cart_detail')
     return redirect(request.META.get('HTTP_REFERER'))
 
 
@@ -36,7 +34,7 @@ def cart_remove(request, product_id):
 #     cart['quantity']
 
 def cart_detail(request):
-    cart = Cart(request)
+
     context = {
         'cart': Cart(request),
         'cart_product_form':CartAddProductForm(request.POST)

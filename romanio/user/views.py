@@ -1,7 +1,8 @@
-
-from django.forms.forms import Form
+from .models import CustomUser
 from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
 from django.views.generic.base import View
+from  django.views.generic.edit import UpdateView
 from .forms import LoginForm, PassResForm, UserRegForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -58,4 +59,17 @@ class UserLogin(View):
 class PassResView(PasswordResetView):
     form_class = PassResForm
 
+
+
+class UpdateProfile(UpdateView):
+    model = CustomUser
+    fields = ['username', 'first_name', 'last_name', 'phone_number', 'email',] # Keep listing whatever fields 
+    # the combined UserProfile and User exposes.
+    template_name = 'profile/profile_update.html'
+    template_name_suffix = ''
+    
+
+    def get_success_url(self):
+  
+        return reverse_lazy('profile')
 
