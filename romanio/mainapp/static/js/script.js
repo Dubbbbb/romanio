@@ -86,5 +86,11 @@
   });
   $('.hero-slider').slickAnimation();
 
+  $('#hide').on('click', function(){
+    (this).setAttribute("hidden", "True")
+
+  });
+
+
 
 })(jQuery);
