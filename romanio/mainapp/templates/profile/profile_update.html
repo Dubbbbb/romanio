@@ -30,18 +30,28 @@
             {% csrf_token %}
             {% for f in form %}
               
-                <li><b>{{f.label}} :</b><input for="{{f.id_for_label }}" {% if f.label == 'Пароль' or f.label == 'Повтор пароля' %}type="password"{% else %} type="text" {% endif %} class="form-control"  placeholder="{{f.label}}"  {{f}}
-                <div class="invalid-feedback">
                 
+                  <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-4 col-form-label">{{ f.label }} :</label>
+                        <div style='margin-left: 20px' class="col-sm-7">
+                        <input style='height: 37px' for="{{f.id_for_label }}"  type="text" class="form-control"  placeholder="{{f.label}}"  {{f}}
+                        </div>
+                </div>
+                <div class="invalid-feedback">
                 {{f.errors}}
                 </div>
+                
                 {% endfor %}
-                <button type="submit" class="btn btn-main text-center">Изменить</button>
+                
+             
               </ul>
+              <button style='margin-left: 260px' type="submit" class="btn btn-main text-center">Изменить</button>
             </div>
+
             
           </div>
         </div>
+        
       </div>
     </div>
   </div>

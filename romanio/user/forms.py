@@ -11,7 +11,6 @@ class UserRegForm(forms.ModelForm):
     password = forms.CharField(label='Пароль', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Повтор пароля', widget=forms.PasswordInput)
 
-
     class Meta:
         model = CustomUser
         fields = ('username', 'first_name', 'last_name', 'phone_number', 'email', 'coop_name')
