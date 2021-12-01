@@ -715,7 +715,7 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 .top-header .contact-number {
   font-size: 12px;
   color: rgb(255, 255, 255);
-  padding-top: 120px;
+  padding-top: 76px;
 }
 
 @media (max-width: 480px) {
