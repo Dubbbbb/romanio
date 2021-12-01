@@ -53,16 +53,4 @@ class SubCategory(models.Model):
         verbose_name_plural = 'Подкатегории'
 
 
-# class SecondCategory(models.Model):
-#     title = models.CharField(max_length=50, verbose_name="Подкатегория")
-#     slug = models.SlugField(max_length=50, unique=True)
-#     maincategory = models.ForeignKey(MainCategory,verbose_name="Основная категория", on_delete=models.CASCADE )
-
-#     def __str__(self):
-#         return self.title
-
-#     class Meta():
-#         verbose_name = 'Подкатегория'
-#         verbose_name_plural = 'Подкатегории'
-
 

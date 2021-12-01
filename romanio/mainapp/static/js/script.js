@@ -91,6 +91,12 @@
 
   });
 
-
+  $('body').on('click', '#flexCheckDefault', function(){
+    if ($(this).is(':checked')){
+      $('#password-input').attr('type', 'text');
+    } else {
+      $('#password-input').attr('type', 'password');
+    }
+  }); 
 
 })(jQuery);
