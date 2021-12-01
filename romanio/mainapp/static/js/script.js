@@ -86,7 +86,7 @@
   });
   $('.hero-slider').slickAnimation();
 
-  $('#hide').on('click', function(){
+  $('body').on('click', '#hide', function(){
     (this).setAttribute("hidden", "True")
 
   });
