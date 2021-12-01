@@ -8,6 +8,14 @@
                     <i class="tf-ion-ios-telephone"></i>
                     <span>0129- 12323-123123</span>
                 </div>
+                <div>
+                    <i style='color:white' class="tf-ion-ios-paperplane-outline"></i>
+                    <span style='color:white'>   @dubbb</span>
+                    </div>
+                    <div>
+                    <i style='color:white' class="tf-ion-android-mail"></i>
+                    <span style='color:white'>Email: hello@example.com</span>
+                    </div>
             </div>
             <div class="col-md-4 col-xs-12 col-sm-4">
                 <div class="logo text-center ">
@@ -20,22 +28,10 @@
             <div class="col-md-4 col-xs-12 col-sm-4">
                 
                 {% if user.is_anonymous %}
-                <ul class="top-menu text-right list-inline" style="padding-top:26px">
-                    <li class="dropdown dropdown-slide" style="padding: 0px">
-                        <a class="btn btn-main btn-small"  style="border-color:white; background-color:transparent; padding: 8px 25px;font-size: 10px;" href="{% url 'login' %}"> Вход </a>
-                    </li>
-                    <li class="dropdown dropdown-slide" >
-                        <a class="btn btn-main btn-small" style="border-color:white; background-color:transparent; padding: 8px 25px;font-size: 10px;" href="{% url 'signin' %}">  Регстрация </a>
-                    </li>
-                </ul>
+                
                 {% else %}
-                <ul class="top-menu text-right list-inline" style="padding-top:26px">
-                    <li class="dropdown dropdown-slide" style="padding: 0px">
-                        <a class="btn btn-main btn-small"  style="border-color:white; background-color:transparent; padding: 8px 25px;font-size: 10px;" href="{% url 'logout' %}"> Выйти </a>
-                    </li>
-                    <li class="dropdown dropdown-slide" >
-                        <a class="btn btn-main btn-small" style="border-color:white; background-color:transparent; padding: 8px 25px;font-size: 10px;" href="{% url 'profile' %}">  Личный кабинет </a>
-                    </li>
+                <ul class="top-menu text-right list-inline" style="padding-:10px">
+                   
 
 
                 <ul class="top-menu text-right list-inline">
@@ -102,42 +98,12 @@
                     <li class="dropdown ">
                         <a href="{% url 'home' %}">Главная</a>
                     </li>
-                    <li class="dropdown dropdown-slide">
-                        <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
-                            role="button" aria-haspopup="true" aria-expanded="false">каталог <span
-                                class="tf-ion-ios-arrow-down"></span></a>
-                        <div class="dropdown-menu">
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 mb-sm-3">
-                                    <ul>
-                                        <li class="dropdown-header">Pages</li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="shop.html">Shop</a></li>
-                                        <li><a href="checkout.html">Checkout</a></li>
-                                        <li><a href="cart.html">Cart</a></li>
-                                        <li><a href="pricing.html">Pricing</a></li>
-                                        <li><a href="confirmation.html">Confirmation</a></li>
-
-                                    </ul>
-                                </div>
-                            <div class="col-lg-6 col-md-6 mb-sm-3">
-                  <ul>
-                    <li class="dropdown-header">Layout</li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="product-single.html">Product Details</a></li>
-                    <li><a href="shop-sidebar.html">Shop With Sidebar</a></li>
-
-                  </ul>
-                </div>
-                
-                            </div>
-                        </div>
-                    </li>
+                    
 
 
                     <li class="dropdown full-width dropdown-slide">
                         <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
-                            role="button" aria-haspopup="true" aria-expanded="false">что-то с личным каб <span
+                            role="button" aria-haspopup="true" aria-expanded="false">Каталог <span
                                 class="tf-ion-ios-arrow-down"></span></a>
                         <div class="dropdown-menu">
                             <div class="row">
@@ -186,12 +152,31 @@
 
 
                     <li class="dropdown dropdown-slide">
-                        <a href="" role="button">Контакты</a>
+                        <a href="{% url 'contact' %}" role="button">Контакты</a>
                     </li>
 
-                    <li class="dropdown ">
-                        <a href="{% url 'home' %}">FAQ</a>
-                    </li>
+                    <li class="dropdown dropdown-slide">
+						<a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
+							role="button" aria-haspopup="true" aria-expanded="false">Личный кабинет <span
+								class="tf-ion-ios-arrow-down"></span></a>
+                                {% if user.is_anonymous %}
+						<ul class="dropdown-menu">
+                        <li><a href="{% url 'login' %}">Войти</a></li>
+							<li><a href="{% url 'signin' %}">Регистрация</a></li>
+                            <li><a href="{% url "password_reset" %}">Забыли пароль?</a></li>
+							
+							
+                            
+						</ul>
+                        {% else %}
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'profile' %}">Мои профиль</a></li>
+                             <li><a href="{% url 'profile_update' user.pk %}">Изменить профиль</a></li>
+							<li><a href="{% url "password_change" %}">Изменить пароль</a></li> 
+							<li><a href="{% url 'logout' %}">Выйти</a></li>
+						</ul>
+                        {% endif %}
+					</li><!-- / Blog -->
                 </ul>
 
             </div>

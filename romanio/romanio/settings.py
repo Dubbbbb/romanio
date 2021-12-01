@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'user',
     'social_django',
     'cart',
-    'order'
+    'order',
+    
 ]
 
 MIDDLEWARE = [
@@ -185,6 +186,7 @@ SOCIAL_AUTH_GOOGLE_EMAIL_EXTRA_DATA = [
     ('number', 'phone_number'),
     ('token_type', 'token_type', True)
 ]
+
 
 
 CART_SESSION_ID = 'cart'
