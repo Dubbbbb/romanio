@@ -86,5 +86,17 @@
   });
   $('.hero-slider').slickAnimation();
 
+  $('body').on('click', '#hide', function(){
+    (this).setAttribute("hidden", "True")
+
+  });
+
+  $('body').on('click', '#flexCheckDefault', function(){
+    if ($(this).is(':checked')){
+      $('#password-input').attr('type', 'text');
+    } else {
+      $('#password-input').attr('type', 'password');
+    }
+  }); 
 
 })(jQuery);
