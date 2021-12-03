@@ -1,10 +1,8 @@
-from django import forms
 from django.shortcuts import  get_object_or_404, redirect, render
-from django.views.generic import View, ListView
+from django.views.generic import View, ListView, TemplateView
 from cart.forms import CartAddProductForm
 from user.forms import AddPhoneForm
 from user.models import CustomUser
-from cart.cart import Cart
 from django.core.paginator import Paginator
 from django.db.models import F
 from .models import *
@@ -13,17 +11,18 @@ from .models import *
 
 
 
-class HomePage(View):
+class HomePage(TemplateView):
+
+    template_name = "index.html"
      
-    def get(self, request, *args, **kwargs):
-        context = {
-            "products": Product.objects.all()[:6],
-            "category1": Category.objects.get(pk=2),
-            "category2": Category.objects.exclude(pk=2),
-            "cart_product_form": CartAddProductForm,
-            # "cart": Cart(request)
-       }
-        return render(request, "index.html", context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["products"] = Product.objects.all()[:6]
+        context["category1"] = Category.objects.get(pk=2)
+        context["category2"] = Category.objects.exclude(pk=2)
+        context["cart_product_form"] = CartAddProductForm
+        return context
+    
 
 
 
@@ -37,7 +36,7 @@ class CatalogPage(View):
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)    
 
-        subscription_id = SubCategory.objects.all()
+
 
         context = {
             "categories": Category.objects.all(),
@@ -48,7 +47,8 @@ class CatalogPage(View):
             "subcategories": SubCategory.objects.filter(category_id=F('category__id')),
         }
         return render(request, "catalog.html", context)
-# (category__slug=self.kwargs['slug_url'])
+
+
 
 
 class SubCategoryView(View):
@@ -59,7 +59,6 @@ class SubCategoryView(View):
 
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)    
-
 
         context = {
             "categories": Category.objects.all(),
@@ -72,15 +71,16 @@ class SubCategoryView(View):
         return render(request, "subcategory_catalog.html", context)
 
 
-class ProductDetail(View):
+class ProductDetail(TemplateView):
 
-    def get(self, request, *args, **kwargs):
-        context = {
-            "product": Product.objects.filter(slug=self.kwargs['slug_url'])[:1],
-            "related_product": Product.objects.filter(category__slug=self.kwargs['slug_category']).exclude(slug=self.kwargs['slug_url']),     
-            "cart_product_form": CartAddProductForm,
-        }       
-        return render(request, "product-single.html", context)
+    template_name = "product-single.html"
+   
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["product"] = Product.objects.filter(slug=self.kwargs['slug_url'])[:1]
+        context["related_product"] = Product.objects.filter(category__slug=self.kwargs['slug_category']).exclude(slug=self.kwargs['slug_url'])   
+        context["cart_product_form"] = CartAddProductForm
+        return context
 
 
 class ProfileView(View):
@@ -90,6 +90,7 @@ class ProfileView(View):
             "user":CustomUser.objects.get(username=request.user.username)
         }
         return render(request, 'profile/profile.html', context)
+
 
 class PhoneAddView(View):
 
@@ -111,13 +112,10 @@ class PhoneAddView(View):
         return render(request, 'profile/phone_add.html', {'form':form})
 
 
-class ContactPage(View):
+class ContactPage(TemplateView):
 
-    def get(self, request, *args, **kwargs):
-        context = {
-
-        }
-        return render(request, 'contact.html', context)
+    template_name = "contact.html"
+  
 
 
 
