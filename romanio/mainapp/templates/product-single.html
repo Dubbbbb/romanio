@@ -23,29 +23,17 @@
 				<div class="single-product-slider">
 					<div id='carousel-custom' class='carousel slide' data-ride='carousel'>
 						<div class='carousel-outer'>
-							<!-- me art lab slider -->
-							<div class='carousel-inner '>
+			
+							<!-- <div class='carousel-inner '>
 								<div class='item active'>
 									<img src='images/shop/single-products/product-1.jpg' alt='' data-zoom-image="images/shop/single-products/product-1.jpg" />
 								</div>
-								<div class='item'>
+								в цикле перебрать Ыфотки продукта
+									 <div class='item'>
 									<img src='images/shop/single-products/product-2.jpg' alt='' data-zoom-image="images/shop/single-products/product-2.jpg" />
 								</div>
 								
-								<div class='item'>
-									<img src='images/shop/single-products/product-3.jpg' alt='' data-zoom-image="images/shop/single-products/product-3.jpg" />
-								</div>
-								<div class='item'>
-									<img src='images/shop/single-products/product-4.jpg' alt='' data-zoom-image="images/shop/single-products/product-4.jpg" />
-								</div>
-								<div class='item'>
-									<img src='images/shop/single-products/product-5.jpg' alt='' data-zoom-image="images/shop/single-products/product-5.jpg" />
-								</div>
-								<div class='item'>
-									<img src='images/shop/single-products/product-6.jpg' alt='' data-zoom-image="images/shop/single-products/product-6.jpg" />
-								</div>
-								
-							</div>
+							</div> -->
 							
 							<!-- sag sol -->
 							<a class='left carousel-control' href='#carousel-custom' data-slide='prev'>
@@ -56,7 +44,7 @@
 							</a>
 						</div>
 						
-						<!-- thumb -->
+
 						<ol class='carousel-indicators mCustomScrollbar meartlab'>
 							<li data-target='#carousel-custom' data-slide-to='0' class='active'>
 								<img src='images/shop/single-products/product-1.jpg' alt='' />
@@ -88,47 +76,27 @@
 					<h2>{{ item.title }}</h2>
 					<p class="product-price">{{ item.price }} BYN</p>
 					
-					<p class="product-description mt-20">
-						{{ item.description }}
-					</p>
-					<p>{{ item.description }}</p>
-					<div class="color-swatches">
-						<span>color:</span>
-						<ul>
-							<li>
-								<a href="#!" class="swatch-violet"></a>
-							</li>
-							<li>
-								<a href="#!" class="swatch-black"></a>
-							</li>
-							<li>
-								<a href="#!" class="swatch-cream"></a>
-							</li>
-						</ul>
-					</div>
-					<div class="product-size">
-						<span>Size:</span>
-						<select class="form-control">
-							<option>S</option>
-							<option>M</option>
-							<option>L</option>
-							<option>XL</option>
-						</select>
-					</div>
-					<div class="product-quantity">
-						<span>Quantity:</span>
-						<div class="product-quantity-slider">
-							<input id="product-quantity" type="text" value="0" name="product-quantity">
+					
+					<div class="tabCommon mt-20">
+					
+						<div class="tab-content patternbg">
+							<div id="details" class="tab-pane fade active in">
+								<h4>Описание товара</h4>
+								<p>{{ item.description }}</p>
+					
+							</div>
 						</div>
+					
+					
+					<form action="{% url 'cart_add' item.id %}" method="post">
+					{% csrf_token %}
+					<div class="product-quantity" >
+						<span style="font-size:15px; margin-bottom:7px">Количество:</span>
+						{{ cart_product_form.quantity }}
 					</div>
-					<div class="product-category">
-						<span>Categories:</span>
-						<ul>
-							<li><a href="product-single.html">Products</a></li>
-							<li><a href="product-single.html">Soap</a></li>
-						</ul>
-					</div>
-					<a href="cart.html" class="btn btn-main mt-20">Add To Cart</a>
+					
+					<button style="margin-top:0px" type="submit" class="btn btn-main mt-20">Добавить в корзину</button>
+					</form>
 				</div>
 			</div>
 		</div>

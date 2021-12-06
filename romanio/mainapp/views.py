@@ -45,6 +45,7 @@ class ProductDetail(View):
         context = {
             "product": Product.objects.filter(slug=self.kwargs['slug_url'])[:1],
             "related_product": Product.objects.filter(category__slug=self.kwargs['slug_category']).exclude(slug=self.kwargs['slug_url']),     
+            "cart_product_form": CartAddProductForm,
         }       
         return render(request, "product-single.html", context)
 

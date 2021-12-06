@@ -19,23 +19,9 @@
             
             <div class="col-md-4 col-xs-12 col-sm-4">
                 
-                {% if user.is_anonymous %}
-                <ul class="top-menu text-right list-inline" style="padding-top:26px">
-                    <li class="dropdown dropdown-slide" style="padding: 0px">
-                        <a class="btn btn-main btn-small"  style="border-color:white; background-color:transparent; padding: 8px 25px;font-size: 10px;" href="{% url 'login' %}"> Вход </a>
-                    </li>
-                    <li class="dropdown dropdown-slide" >
-                        <a class="btn btn-main btn-small" style="border-color:white; background-color:transparent; padding: 8px 25px;font-size: 10px;" href="{% url 'signin' %}">  Регстрация </a>
-                    </li>
-                </ul>
-                {% else %}
-                <ul class="top-menu text-right list-inline" style="padding-top:26px">
-                    <li class="dropdown dropdown-slide" style="padding: 0px">
-                        <a class="btn btn-main btn-small"  style="border-color:white; background-color:transparent; padding: 8px 25px;font-size: 10px;" href="{% url 'logout' %}"> Выйти </a>
-                    </li>
-                    <li class="dropdown dropdown-slide" >
-                        <a class="btn btn-main btn-small" style="border-color:white; background-color:transparent; padding: 8px 25px;font-size: 10px;" href="{% url 'profile' %}">  Личный кабинет </a>
-                    </li>
+
+                <ul class="top-menu text-right list-inline" style="padding-:10px">
+                   
 
 
                 <ul class="top-menu text-right list-inline">
@@ -75,7 +61,7 @@
 
                     </li>
                 </ul>
-                {% endif %}
+
             </div>
         </div>
     </div>
