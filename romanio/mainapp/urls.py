@@ -10,5 +10,6 @@ urlpatterns = [
     path('catalog/<str:slug_category>/<str:slug_url>/', ProductDetail.as_view(), name="product_detail"),
     path('profile/', ProfileView.as_view(), name='profile'),
     path('complete_reg/',PhoneAddView.as_view(),{'next_page': settings.LOGIN_REDIRECT_URL}, name='phone_add' ),
-    
+    path('contact/',ContactPage.as_view(), name='contact' ),
+    path('catalog/<str:slug_subcategory>/', SubCategoryView.as_view(), name='subcategory')    
 ]

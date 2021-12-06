@@ -5,12 +5,13 @@ from django.core.exceptions import ValidationError
 import re
 
 
+
 @deconstructible
 class _PhoneValidator:
 
     _pattern = re.compile(
     "^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$"
-)
+    )
 
     def __call__(self, value):
         if not self._pattern.match(value):
@@ -18,8 +19,17 @@ class _PhoneValidator:
 
 
 class CustomUser(AbstractUser):
-    phone_number = models.CharField(max_length=20, validators=[_PhoneValidator()], verbose_name="Номер телефона")
-    coop_name = models.CharField(max_length=50, verbose_name="Наименование организации", blank=True, null=True)
+
+    phone_number = models.CharField(
+        max_length=20,
+        validators=[_PhoneValidator()],
+        verbose_name="Номер телефона"
+        )
+    
+    coop_name = models.CharField(
+        max_length=50,
+        verbose_name="Наименование организации",
+        blank=True, null=True)
 
 
     def __str__(self):
