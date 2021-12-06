@@ -31,7 +31,7 @@ class CatalogPage(View):
     def get(self,request, *args, **kwargs,):
         
         products = Product.objects.filter(category__slug=self.kwargs['slug_url'])
-        paginator = Paginator(products, 1)
+        paginator = Paginator(products, 2)
 
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)    
@@ -83,7 +83,7 @@ class ProductDetail(TemplateView):
         return context
 
 
-class ProfileView(View):
+class ProfileView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         context = {
@@ -98,7 +98,6 @@ class PhoneAddView(View):
         if request.user.phone_number:
             return redirect('home')
         form = AddPhoneForm()
-        
         return render(request, 'profile/phone_add.html', {'form': form})
 
     def post(self, request, *args, **kwargs):
